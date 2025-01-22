@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/22 12:27:36 by ebansse           #+#    #+#             */
+/*   Updated: 2025/01/22 16:04:14 by ebansse          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	s(t_node **stack_a)
+void	swap(t_node **stack_a)
 {
 	t_node	*tmp;
 	int		tmp_value;
@@ -14,13 +26,7 @@ void	s(t_node **stack_a)
 	tmp->value = tmp_value;
 }
 
-void	ss(t_node **stack_a, t_node **stack_b)
-{
-	s(stack_a);
-	s(stack_b);
-}
-
-void	p(t_node **stack_a, t_node **stack_b)
+void	push(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 
@@ -34,23 +40,35 @@ void	p(t_node **stack_a, t_node **stack_b)
 	free(tmp);
 }
 
-void	r(t_node **stack)
+
+void	rotate(t_node **stack)
 {
-	t_node	*last;
-	int		tmp_value;
+    t_node *prev = NULL;
+    t_node *tail = *stack;
 
-	if (!*stack || !(*stack)->next)
-		return ;
+    if (!stack || !(*stack) || !(*stack)->next)
+        return;
 
-	last = ft_last_node(*stack);
-	tmp_value = (*stack)->value;
-	(*stack)->value = last->value;
-	while ((*stack)->next != NULL)
-	{
-		(*stack)->next->value = tmp_value;
-		*stack = (*stack)->next;
-		tmp_value = (*stack)->value;
-	}
+    while (tail->next)
+    {
+        prev = tail;
+        tail = tail->next;
+    }
+    prev->next = NULL;
+    tail->next = *stack;
+    *stack = tail;
+}
+
+void	reverse_rotate(t_node **stack)
+{
+	t_node	*tail;
+	t_node	*tmp;
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tail = ft_last_node(*stack);
+	tmp->next = NULL;
+	tail->next = tmp;
 }
 
 void	print_stacks(t_node *stack_a, t_node *stack_b)
@@ -67,6 +85,9 @@ void	print_stacks(t_node *stack_a, t_node *stack_b)
 
 void	print_stack(t_node *stack)
 {
+	/*t_node	*tmp;
+	tmp = ft_last_node(stack);*/
+	
 	while (stack != NULL)
 	{
 		ft_printf("node[%d] : %d\n", stack->index, stack->value);
@@ -86,8 +107,9 @@ int main(int argc, char **argv)
 	else if (argc > 2)
 		stack_a = stack_int(argc, argv);
 	print_stacks(stack_a, stack_b);
+	print_stack(stack_a);
+	swap(&stack_a);
 	ft_printf("\n");
-	r(&stack_a);
 	print_stack(stack_a);
 	return (0);
 }

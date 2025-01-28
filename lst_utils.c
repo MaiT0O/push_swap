@@ -60,14 +60,16 @@ t_node	*stack_chr(char *str)
 	t_node	*stack;
 	char	**argv;
 	int		i;
+	int		wc;
 
 	stack = NULL;
-	i = ft_count_word(str) - 1;
+	i = 0;
+	wc = ft_count_word(str);
 	argv = ft_splitt(str);
-	while (i >= 0)
+	while (i < wc)
 	{
 		ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
-		i--;
+		i++;
 	}
 	return (stack);
 }
@@ -78,11 +80,11 @@ t_node	*stack_int(int argc, char **argv)
 	int		i;
 
 	stack = NULL;
-	i = argc - 1;
-	while (i > 0)
+	i = 1;
+	while (i < argc)
 	{
 		ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
-		i--;
+		i++;
 	}
 	return (stack);
 }

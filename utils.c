@@ -57,3 +57,14 @@ char	**ft_splitt(char *str)
 	out[k] = NULL;
 	return (out);
 }
+
+int	stack_size(t_node *stack)
+{
+	int size;
+	size = 0;
+	while (stack) {
+		size++;
+		stack = stack->next;
+	}
+	return size;
+}

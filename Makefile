@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LD_FLAGS = -Llibft -l:libft.a
 
-SRC = main.c utils.c lst_utils.c
+SRC = main.c utils.c lst_utils.c push.c rotate.c r_rotate.c swap.c sort.c
 
 OBJ = $(SRC:.c=.o)
 

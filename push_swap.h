@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 
@@ -33,5 +34,17 @@ t_node			*ft_new_node(int value);
 
 t_node			*stack_chr(char *str);
 t_node			*stack_int(int argc, char **argv);
+
+void	pa(t_node **stack_a, t_node **stack_b);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	ra(t_node **stack_a);
+void	rb(t_node **stack_b);
+void	rr(t_node **stack_a, t_node **stack_b);
+void	rra(t_node **stack_a);
+void	rrb(t_node **stack_b);
+void	rrr(t_node **stack_a, t_node **stack_b);
+void	sa(t_node **stack_a);
+void	sb(t_node **stack_b);
+void	ss(t_node **stack_a, t_node **stack_b);
 
 #endif

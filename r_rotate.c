@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r_rotate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/04 15:35:37 by ebansse           #+#    #+#             */
+/*   Updated: 2025/02/04 15:35:38 by ebansse          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	r_rotate(t_node **stack)
@@ -19,7 +31,6 @@ void	r_rotate(t_node **stack)
 
     second_last->next = NULL;
     tail->next = *stack;
-    (*stack)->prev = tail;
     *stack = tail;
     (*stack)->prev = NULL;
 }

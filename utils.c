@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:32 by ebansse           #+#    #+#             */
-/*   Updated: 2025/01/22 12:27:33 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:47:59 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_splitt(char *str)
 	return (out);
 }
 
-int	stack_size(t_node *stack)
+int	get_stack_size(t_node *stack)
 {
 	int size;
 	size = 0;

@@ -6,31 +6,11 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:29 by ebansse           #+#    #+#             */
-/*   Updated: 2025/01/22 12:27:30 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/04 18:13:27 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_stack_add_back(t_node **lst, t_node *new)
-{
-    t_node	*last;
-
-    if (!new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-		new->index = 0;
-		new->prev = NULL;
-		new->next = NULL;
-        return ;
-    }
-    last = ft_last_node(*lst);
-	new->index = last->index + 1;
-    last->next = new;
-    new->prev = last;
-}
 
 t_node	*ft_last_node(t_node *node)
 {
@@ -41,6 +21,24 @@ t_node	*ft_last_node(t_node *node)
 	return (node);
 }
 
+void	ft_stack_add_back(t_node **lst, t_node *new)
+{
+    t_node	*last;
+
+    if (!new)
+        return ;
+    if (!*lst)
+    {
+        *lst = new;
+		new->prev = NULL;
+		new->next = NULL;
+        return ;
+    }
+    last = ft_last_node(*lst);
+    last->next = new;
+    new->prev = last;
+}
+
 t_node	*ft_new_node(int value)
 {
 	t_node	*new;
@@ -49,7 +47,6 @@ t_node	*ft_new_node(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
-	new->index = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

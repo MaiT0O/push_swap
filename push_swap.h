@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:39 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/04 18:24:34 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/05 13:59:58 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
-# include <stdbool.h>
+# include <limits.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 
@@ -37,8 +37,12 @@ t_node			*stack_int(int argc, char **argv);
 
 int				is_sorted(t_node **node);
 int				get_stack_size(t_node *stack);
-void			sort(t_node **stack);
-void	min_on_top(t_node **stack, t_node *node);
+void	print_stacks(t_node *stack_a, t_node *stack_b);
+
+void	maj_index(t_node *stack_a, t_node *stack_b);
+void	sort_5(t_node **stack_a, t_node **stack_b);
+void	sort_3(t_node **stack);
+
 
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);

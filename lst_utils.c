@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:29 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/04 18:13:27 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:14:09 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_stack_add_back(t_node **lst, t_node *new)
     if (!*lst)
     {
         *lst = new;
+		new->index = 0;
 		new->prev = NULL;
 		new->next = NULL;
         return ;
@@ -47,6 +48,7 @@ t_node	*ft_new_node(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
+	new->index = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -65,8 +67,16 @@ t_node	*stack_chr(char *str)
 	argv = ft_splitt(str);
 	while (i < wc)
 	{
-		ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
-		i++;
+		if (ft_atoi(argv[i]) < INT_MIN || ft_atoi(argv[i]) > INT_MAX)
+		{
+			ft_printf("nombre invalide :(\n");
+			return (NULL);
+		}
+		else
+		{
+			ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
+			i++;
+		}
 	}
 	return (stack);
 }
@@ -80,8 +90,16 @@ t_node	*stack_int(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
-		i++;
+		if (ft_atoi(argv[i]) < INT_MIN || ft_atoi(argv[i]) > INT_MAX)
+		{
+			ft_printf("nombre invalide :(\n");
+			return (NULL);
+		}
+		else
+		{
+			ft_stack_add_back(&stack, ft_new_node(ft_atoi(argv[i])));
+			i++;
+		}
 	}
 	return (stack);
 }

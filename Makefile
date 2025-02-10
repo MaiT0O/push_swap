@@ -6,7 +6,7 @@
 #    By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 13:36:18 by ebansse           #+#    #+#              #
-#    Updated: 2025/02/05 13:55:20 by ebansse          ###   ########.fr        #
+#    Updated: 2025/02/10 15:50:37 by ebansse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LD_FLAGS = -Llibft -l:libft.a
 
-SRC = main.c utils.c lst_utils.c push.c rotate.c r_rotate.c swap.c tiny_sort.c split.c
+SRC = main.c utils.c lst_utils.c push.c rotate.c r_rotate.c swap.c tiny_sort.c split.c turkey_sort.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:39 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/05 13:59:58 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:19:48 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
-# include <limits.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 

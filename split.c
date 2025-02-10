@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:32 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/05 13:54:22 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:27:02 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ int	ft_count_word(char *str)
 
 char	**ft_splitt(char *str)
 {
-	int i;
-	int j;
-	int k;
-	int wc;
-	
+	int 	i;
+	int 	j;
+	int 	k;
+	char	**out;
+
 	k = 0;
-	wc = ft_count_word(str);
-	char **out = (char **)malloc(sizeof(char *) * (wc + 1));
 	i = 0;
+	out = (char **)malloc(sizeof(char *) * (ft_count_word(str) + 1));
 	
 	while (str[i])
 	{

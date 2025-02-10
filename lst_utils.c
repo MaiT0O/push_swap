@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:29 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/07 19:01:14 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:12:09 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,33 +67,20 @@ t_node	*stack_chr(char *str)
 	argv = ft_splitt(str);
 	while (i < wc)
 	{
-		if (!ft_atoi(argv[i]))
+		if (ft_atoi_custom(argv[i]) < INT_MIN || ft_atoi_custom(argv[i]) > INT_MAX
+			 || ft_atoi_custom(argv[i]) == LONG_MIN)
 		{
-			ft_printf("caca\n");
-			return (NULL);
-		}
-		if (*ft_atoi(argv[i]) < INT_MIN || *ft_atoi(argv[i]) > INT_MAX)
-		{
-			ft_printf("nombre invalide :(\n");
+			ft_printf("Error\n");
 			return (NULL);
 		}
 		else
 		{
-			ft_stack_add_back(&stack, ft_new_node(*ft_atoi(argv[i])));
+			ft_stack_add_back(&stack, ft_new_node(ft_atoi_custom(argv[i])));
 			i++;
 		}
 	}
 	return (stack);
 }
-
-/*int	verif_num(char *str)
-{
-	while (*str)
-	{
-		if (*s
-	}
-	
-}*/
 
 t_node	*stack_int(int argc, char **argv)
 {
@@ -104,19 +91,15 @@ t_node	*stack_int(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_atoi(argv[i]))
+		if (ft_atoi_custom(argv[i]) < INT_MIN || ft_atoi_custom(argv[i]) > INT_MAX
+			 || ft_atoi_custom(argv[i]) == LONG_MIN)
 		{
-			ft_printf("caca\n");
-			return (NULL);
-		}
-		else if (*ft_atoi(argv[i]) < INT_MIN || *ft_atoi(argv[i]) > INT_MAX)
-		{
-			ft_printf("nombre invalide :(\n");
+			ft_printf("Error\n");
 			return (NULL);
 		}
 		else
 		{
-			ft_stack_add_back(&stack, ft_new_node(*ft_atoi(argv[i])));
+			ft_stack_add_back(&stack, ft_new_node(ft_atoi_custom(argv[i])));
 			i++;
 		}
 	}

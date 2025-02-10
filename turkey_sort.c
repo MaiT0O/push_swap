@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   turkey_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 13:45:57 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/10 13:49:30 by ebansse          ###   ########.fr       */
+/*   Created: 2025/02/10 15:50:09 by ebansse           #+#    #+#             */
+/*   Updated: 2025/02/10 16:35:43 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	node_cost(t_node *node, t_node *stack_a, t_node *stack_b)
 {
-	int	neg;
-	int	i;
-	int	num;
+	int	index_b;
+	int	index_a;
+	int	cost;
 
-	i = 0;
-	neg = 1;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	index_b = -1;
+	index_a = -1;
+	cost = 0;
+	while (stack_b)
 	{
-		if (str[i] == '-')
-			neg *= -1;
-		i++;
+		if (node->value > stack_b->value)
+			index_b = stack_a->index;
+		stack_b = stack_b->next;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		num = num * 10 + (str[i] - 48);
-		i++;
-	}
-	return (num * neg);
+	if (index_b == -1)
+		cost += 2;	
+	
 }

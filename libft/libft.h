@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -49,7 +50,7 @@ char	*ft_strncpy(char *s1, char *s2, int n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
-long	*ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s1);
 
@@ -89,5 +90,6 @@ char	*get_next_line(int fd);
 int		ft_str_only_chr(char *str, char searchedChar);
 int		ft_strcmp(char *first, char *second);
 char	*ft_strncpy(char *s1, char *s2, int n);
+long	ft_atoi_custom(const char *str);
 
 #endif

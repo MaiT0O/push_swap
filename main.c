@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:36 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/07 19:00:49 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:12:33 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort(t_node **stack_a, t_node **stack_b)
 {
 	int	stack_size;
 
-	if (*stack_a == NULL || *stack_b == NULL)
+	if (*stack_a == NULL)
 		return ;
 
 	else if (is_sorted(stack_a))
@@ -56,14 +56,12 @@ void	sort(t_node **stack_a, t_node **stack_b)
 	else if (stack_size == 3)
 		sort_3(stack_a);
 	else if (stack_size == 5)
-	{
-		sort_5(stack_a, stack_b);
-	}
+		sort_5(stack_a, stack_b);		
 }
 
 int main(int argc, char **argv)
 {
-	/*t_node	*stack_a;
+	t_node	*stack_a;
 	t_node	*stack_b;
 
 	stack_a = NULL;
@@ -75,7 +73,5 @@ int main(int argc, char **argv)
 	sort(&stack_a, &stack_b);
 	ft_printf("\n");
 	print_stacks(stack_a, stack_b);
-	return (0);*/
-	if (argc == 2)
-		ft_printf("atoi : %d\n", atoi(argv[1]));
+	return (0);
 }

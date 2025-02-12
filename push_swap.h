@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:39 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/10 14:19:48 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:48:21 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,18 @@
 typedef struct Node {
     int		value;
 	int		index;
+	char	*flag;
 	struct Node *next;
 	struct Node *prev;
 }			t_node;
+
+typedef struct Lib {
+	int	median_a;
+	int	median_b;
+	int	size_a;
+	int	size_b;
+	int	index_b;
+}			t_lib;
 
 int				ft_count_word(char *str);
 char			**ft_splitt(char *s);
@@ -41,6 +50,7 @@ void	print_stacks(t_node *stack_a, t_node *stack_b);
 void	maj_index(t_node *stack_a, t_node *stack_b);
 void	sort_5(t_node **stack_a, t_node **stack_b);
 void	sort_3(t_node **stack);
+int	node_on_top(t_node **stack, t_node *node, int cost);
 
 
 void	pa(t_node **stack_a, t_node **stack_b);

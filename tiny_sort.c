@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:00:08 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/05 13:32:30 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:39:26 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_node	*bigest(t_node **stack)
 	return (big);
 }
 
-void	min_on_top(t_node **stack, t_node *node)
+void	node_on_top(t_node **stack, t_node *node)
 {
 	int		median;
 	int		i;
@@ -52,8 +52,8 @@ void	min_on_top(t_node **stack, t_node *node)
 
 	last = ft_last_node(*stack);
 	i = node->index;
-	median = (last->index + 1) / 2;
-	if (node->index < median)
+	median = last->index / 2;
+	if (node->index <= median)
 	{
 		while (i > 0)
 		{
@@ -97,16 +97,19 @@ void	sort_3(t_node **stack)
         rra(stack);
 }
 
-void	sort_5(t_node **stack_a, t_node **stack_b)
+void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 {
 	t_node	*small;
 	int		i;
+	int		push;
+	int		cost;
 
 	i = 0;
-	while (i < 2)
+	push = lib->size_a - 3;
+	while (i < push)
 	{
 		small = smallest(stack_a);
-		min_on_top(stack_a, small);
+		node_on_top(stack_a, small);
 		pb(stack_a, stack_b);
 		maj_index(*stack_a, *stack_b);
 		print_stacks(*stack_a, *stack_b);
@@ -115,8 +118,12 @@ void	sort_5(t_node **stack_a, t_node **stack_b)
 	sort_3(stack_a);
 	maj_index(*stack_a, *stack_b);
 	print_stacks(*stack_a, *stack_b);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	i = 0;
+	while (i < push)
+	{
+		pa(stack_a, stack_b);
+		i++;
+	}
 	maj_index(*stack_a, *stack_b);
 	print_stacks(*stack_a, *stack_b);
 }

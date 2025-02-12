@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:36 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/10 15:12:33 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:38:33 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,16 @@ void	print_stacks(t_node *stack_a, t_node *stack_b)
 	ft_printf("\n");
 }
 
-void	sort(t_node **stack_a, t_node **stack_b)
+void	initialisation(t_lib *lib, t_node *stack_b, t_node *stack_a)
 {
-	int	stack_size;
+	lib->median_b = (get_stack_size(stack_b) - 1) / 2;
+	lib->median_a = (get_stack_size(stack_a) - 1) / 2;
+	lib->size_b = get_stack_size(stack_b);
+	lib->size_a = get_stack_size(stack_a);
+}
 
+void	sort(t_node **stack_a, t_node **stack_b, t_lib *lib)
+{
 	if (*stack_a == NULL)
 		return ;
 
@@ -48,14 +54,13 @@ void	sort(t_node **stack_a, t_node **stack_b)
 		ft_printf("already sorted ;)");
 		return ;
 	}
-	stack_size = get_stack_size(*stack_a);
 	maj_index(*stack_a, *stack_b);
 	print_stacks(*stack_a, *stack_b);
-	if (stack_size == 2)
+	if (lib->size_a == 2)
 		sa(stack_a);
-	else if (stack_size == 3)
+	else if (lib->size_a == 3)
 		sort_3(stack_a);
-	else if (stack_size == 5)
+	else if (lib->size_a == 4 || lib->size_a == 5)
 		sort_5(stack_a, stack_b);		
 }
 
@@ -63,6 +68,7 @@ int main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	t_lib	*lib;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -70,7 +76,8 @@ int main(int argc, char **argv)
 		stack_a = stack_chr(argv[1]);
 	else if (argc > 2)
 		stack_a = stack_int(argc, argv);
-	sort(&stack_a, &stack_b);
+	initialisation(lib, stack_b, stack_a);
+	sort(&stack_a, &stack_b, lib);
 	ft_printf("\n");
 	print_stacks(stack_a, stack_b);
 	return (0);

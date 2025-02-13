@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:39 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/12 17:48:21 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:34:19 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 typedef struct Node {
     int		value;
 	int		index;
-	char	*flag;
 	struct Node *next;
 	struct Node *prev;
 }			t_node;
@@ -47,9 +46,11 @@ int				is_sorted(t_node **node);
 int				get_stack_size(t_node *stack);
 void	print_stacks(t_node *stack_a, t_node *stack_b);
 
-void	maj_index(t_node *stack_a, t_node *stack_b);
+void	maj_index(t_node **stack_a, t_node **stack_b);
+t_node	*bigest(t_node **stack);
 void	sort_5(t_node **stack_a, t_node **stack_b);
 void	sort_3(t_node **stack);
+void	sort_all(t_node **stack_a, t_node **stack_b, t_lib *lib);
 int	node_on_top(t_node **stack, t_node *node, int cost);
 
 

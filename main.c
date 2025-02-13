@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:36 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/12 17:38:33 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:34:36 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	print_stacks(t_node *stack_a, t_node *stack_b)
 
 void	initialisation(t_lib *lib, t_node *stack_b, t_node *stack_a)
 {
-	lib->median_b = (get_stack_size(stack_b) - 1) / 2;
 	lib->median_a = (get_stack_size(stack_a) - 1) / 2;
 	lib->size_b = get_stack_size(stack_b);
 	lib->size_a = get_stack_size(stack_a);
@@ -61,7 +60,9 @@ void	sort(t_node **stack_a, t_node **stack_b, t_lib *lib)
 	else if (lib->size_a == 3)
 		sort_3(stack_a);
 	else if (lib->size_a == 4 || lib->size_a == 5)
-		sort_5(stack_a, stack_b);		
+		sort_5(stack_a, stack_b);
+	else if (lib->size_a > 5)
+		sort_all(stack_a, stack_a, lib);	
 }
 
 int main(int argc, char **argv)

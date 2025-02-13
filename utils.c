@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:54:40 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/12 17:13:52 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/13 14:01:22 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,21 @@ int	get_stack_size(t_node *stack)
 	return size;
 }
 
-void	update_index(t_node *stack)
+void	update_index(t_node **stack)
 {
-	int i = 0;
-
-	while (stack)
+	int 	i;
+	t_node *tmp;
+	
+	i = 0;
+	tmp = *stack;
+	while (tmp)
 	{
-		stack->index = i++;
-		stack = stack->next;
+		tmp->index = i++;
+		tmp = tmp->next;
 	}
 }
 
-void	maj_index(t_node *stack_a, t_node *stack_b)
+void	maj_index(t_node **stack_a, t_node **stack_b)
 {
 	update_index(stack_a);
 	update_index(stack_b);

@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:54:40 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/13 14:01:22 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/17 14:01:44 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	get_stack_size(t_node *stack)
 {
 	t_node	*tmp;
 	int 	size;
-	
+
+	if (!stack)
+		return (0);
+
 	tmp = stack;
 	size = 0;
 	while (tmp)

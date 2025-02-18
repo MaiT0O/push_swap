@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:39 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/13 16:34:19 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/17 13:40:49 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ void	print_stacks(t_node *stack_a, t_node *stack_b);
 
 void	maj_index(t_node **stack_a, t_node **stack_b);
 t_node	*bigest(t_node **stack);
-void	sort_5(t_node **stack_a, t_node **stack_b);
+void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib);
 void	sort_3(t_node **stack);
 void	sort_all(t_node **stack_a, t_node **stack_b, t_lib *lib);
-int	node_on_top(t_node **stack, t_node *node, int cost);
-
+void	node_on_top(t_node **stack, t_node *node);
 
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);

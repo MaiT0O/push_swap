@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:00:08 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/12 17:39:26 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/02/17 13:43:44 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 	t_node	*small;
 	int		i;
 	int		push;
-	int		cost;
 
 	i = 0;
 	push = lib->size_a - 3;
@@ -111,12 +110,12 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 		small = smallest(stack_a);
 		node_on_top(stack_a, small);
 		pb(stack_a, stack_b);
-		maj_index(*stack_a, *stack_b);
+		maj_index(stack_a, stack_b);
 		print_stacks(*stack_a, *stack_b);
 		i++;
 	}
 	sort_3(stack_a);
-	maj_index(*stack_a, *stack_b);
+	maj_index(stack_a, stack_b);
 	print_stacks(*stack_a, *stack_b);
 	i = 0;
 	while (i < push)
@@ -124,6 +123,6 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 		pa(stack_a, stack_b);
 		i++;
 	}
-	maj_index(*stack_a, *stack_b);
+	maj_index(stack_a, stack_b);
 	print_stacks(*stack_a, *stack_b);
 }

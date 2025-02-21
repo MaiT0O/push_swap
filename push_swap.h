@@ -47,6 +47,7 @@ int				get_stack_size(t_node *stack);
 void	print_stacks(t_node *stack_a, t_node *stack_b);
 
 void	maj_index(t_node **stack_a, t_node **stack_b);
+void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b);
 t_node	*bigest(t_node **stack);
 void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib);
 void	sort_3(t_node **stack);

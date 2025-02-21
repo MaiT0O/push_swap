@@ -36,6 +36,13 @@ void	print_stacks(t_node *stack_a, t_node *stack_b)
 	ft_printf("\n");
 }
 
+void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b)
+{
+	lib->size_a = get_stack_size(stack_a);
+	lib->size_b = get_stack_size(stack_b);
+	lib->median_a = (lib->size_a - 1) / 2;
+	lib->median_b = (lib->size_b - 1) / 2;
+}
 
 void	sort(t_node **stack_a, t_node **stack_b, t_lib *lib)
 {
@@ -59,12 +66,6 @@ void	sort(t_node **stack_a, t_node **stack_b, t_lib *lib)
 		sort_all(stack_a, stack_b, lib);	
 }
 
-void	initialisation(t_lib *lib, t_node *stack_b, t_node *stack_a)
-{
-	lib->median_a = (get_stack_size(stack_a) - 1) / 2;
-	lib->size_b = get_stack_size(stack_b);
-	lib->size_a = get_stack_size(stack_a);
-}
 int main(int argc, char **argv)
 {
 	t_node	*stack_a;
@@ -81,9 +82,10 @@ int main(int argc, char **argv)
 		stack_a = stack_chr(argv[1]);
 	else if (argc > 2)
 		stack_a = stack_int(argc, argv);
-	initialisation(lib, stack_b, stack_a);
+	lib->size_a = get_stack_size(stack_a);
 	sort(&stack_a, &stack_b, lib);
 	ft_printf("\n");
+	maj_index(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
 	return (0);
 }

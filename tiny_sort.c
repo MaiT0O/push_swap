@@ -12,63 +12,6 @@
 
 #include "push_swap.h"
 
-t_node	*smallest(t_node **stack)
-{
-	t_node *tmp;
-	t_node	*small;
-
-	tmp = *stack;
-	small = tmp;
-	while (tmp)
-	{
-		if (tmp->value < small->value)
-			small = tmp;
-		tmp = tmp->next;
-	}
-	return (small);
-}
-
-t_node	*bigest(t_node **stack)
-{
-	t_node *tmp;
-	t_node	*big;
-
-	tmp = *stack;
-	big = tmp;
-	while (tmp)
-	{
-		if (tmp->value > big->value)
-			big = tmp;
-		tmp = tmp->next;
-	}
-	return (big);
-}
-
-void	node_on_top(t_node **stack, t_node *node)
-{
-	int		median;
-	int		i;
-	t_node	*last;
-
-	last = ft_last_node(*stack);
-	i = node->index;
-	median = last->index / 2;
-	if (node->index <= median)
-	{
-		while (i > 0)
-		{
-			ra(stack);
-			i--;
-		}
-	}
-	else
-		while (i <= last->index)
-		{
-			rra(stack);
-			i++;
-		}
-}
-
 void	sort_3(t_node **stack)
 {
 	t_node	*tmp;
@@ -108,9 +51,10 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 	while (i < push)
 	{
 		small = smallest(stack_a);
-		node_on_top(stack_a, small);
+		move_node_on_top_a(stack_a, small->index, lib);
 		pb(stack_a, stack_b);
 		maj_index(stack_a, stack_b);
+		maj_size(lib, *stack_a, *stack_b);
 		print_stacks(*stack_a, *stack_b);
 		i++;
 	}

@@ -36,14 +36,6 @@ void	print_stacks(t_node *stack_a, t_node *stack_b)
 	ft_printf("\n");
 }
 
-void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b)
-{
-	lib->size_a = get_stack_size(stack_a);
-	lib->size_b = get_stack_size(stack_b);
-	lib->median_a = (lib->size_a - 1) / 2;
-	lib->median_b = (lib->size_b - 1) / 2;
-}
-
 void	sort(t_node **stack_a, t_node **stack_b, t_lib *lib)
 {
 	if (*stack_a == NULL)
@@ -76,7 +68,7 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	lib = malloc(sizeof(t_lib));
 	if (!lib)
-    	return (1);
+    	return (0);
 
 	if (argc == 2)
 		stack_a = stack_chr(argv[1]);
@@ -87,5 +79,5 @@ int main(int argc, char **argv)
 	ft_printf("\n");
 	maj_index(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
-	return (0);
+	return (1);
 }

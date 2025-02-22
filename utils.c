@@ -44,22 +44,30 @@ void	update_index(t_node **stack)
 	}
 }
 
-void	maj_index(t_node **stack_a, t_node **stack_b)
-{
-	update_index(stack_a);
-	update_index(stack_b);
-}
-
 int	is_sorted(t_node **node)
 {
 	t_node	*tmp;
-
+	
 	tmp = *node;
 	while ((tmp) && (tmp)->next)
 	{
 		if (tmp->value > tmp->next->value)
-			return (0);
+		return (0);
 		tmp = tmp->next;
 	}
 	return (1);
+}
+
+void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b)
+{
+	lib->size_a = get_stack_size(stack_a);
+	lib->size_b = get_stack_size(stack_b);
+	lib->median_a = (lib->size_a - 1) / 2;
+	lib->median_b = (lib->size_b - 1) / 2;
+}
+
+void	maj_index(t_node **stack_a, t_node **stack_b)
+{
+	update_index(stack_a);
+	update_index(stack_b);
 }

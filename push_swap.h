@@ -42,6 +42,27 @@ t_node			*ft_new_node(int value);
 t_node			*stack_chr(char *str);
 t_node			*stack_int(int argc, char **argv);
 
+/*utils.c*/
+int		get_stack_size(t_node *stack);
+void	update_index(t_node **stack);
+void	maj_index(t_node **stack_a, t_node **stack_b);
+int		is_sorted(t_node **node);
+
+/*move.c*/
+void	move_node_to_top_a(t_node **stack_a, int index, t_lib *lib);
+void	move_node_to_top_b(t_node **stack_b, int index, t_lib *lib);
+void	double_rotate(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib);
+void	double_r_rotate(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib);
+void	insert(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib);
+
+/*utils2.c*/
+int		is_smallest(t_node *node, t_node *stack);
+int		closest_lower(t_node *target, t_node *stack);
+int		closest_higher(t_node *target, t_node *stack);
+t_node	*smallest(t_node **stack);
+t_node	*bigest(t_node **stack);
+
+
 int				is_sorted(t_node **node);
 int				get_stack_size(t_node *stack);
 void	print_stacks(t_node *stack_a, t_node *stack_b);

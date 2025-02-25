@@ -4,8 +4,8 @@ void	move_node_to_top_a(t_node **stack_a, int index, t_lib *lib)
 {
     if (!stack_a || !lib)
     {
-        ft_printf("error: stack_a or lib is NULL\n");
-        return;
+        ft_printf("Error\n");
+        return ;
     }
     else if (index <= lib->median_a)
     {
@@ -29,7 +29,7 @@ void	move_node_to_top_b(t_node **stack_b, int index, t_lib *lib)
 {
     if (!stack_b || !lib)
     {
-        ft_printf("error: stack_b or lib is NULL\n");
+        ft_printf("Error\n");
         return;
     }
     else if (index <= lib->median_b)
@@ -106,11 +106,18 @@ void	insert(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib)
 {
 	if (!node || !stack_a || !stack_b || !lib)
 	{
-		ft_printf("error: node, stack_a, stack_b, or lib is NULL\n");
+		ft_printf("Error\n");
 		return ;
 	}
-	ft_printf("node index : %d / index_b : %d / median_a : %d / median_b : %d\n", node->index, lib->index_b, lib->median_a, lib->median_b);
-	if (node->index <= lib->median_a && lib->index_b <= lib->median_b && node->index > 0 && lib->index_b > 0)
+	/*ft_printf("node index : %d / index_b : %d / median_a : %d / median_b : %d\n", node->index, lib->index_b, lib->median_a, lib->median_b);*/	
+	if (is_smallest(node, *stack_b))
+	{
+		move_node_to_top_a(stack_a, node->index, lib);
+		pb(stack_a, stack_b);
+		rb(stack_b);
+		return ;
+	}
+	else if (node->index <= lib->median_a && lib->index_b <= lib->median_b && node->index > 0 && lib->index_b > 0)
 		double_rotate(node, stack_a, stack_b, lib);
 	else if (node->index > lib->median_a && lib->index_b > lib->median_b)
 		double_r_rotate(node, stack_a, stack_b, lib);
@@ -120,5 +127,4 @@ void	insert(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib)
 		move_node_to_top_b(stack_b, lib->index_b, lib);
 	}
 	pb(stack_a, stack_b);
-	print_stacks(*stack_a, *stack_b);
 }

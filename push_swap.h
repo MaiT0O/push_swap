@@ -32,19 +32,17 @@ typedef struct Lib {
 	int	index_b;
 }			t_lib;
 
-int				ft_count_word(char *str);
-char			**ft_splitt(char *s);
+/*split.c*/
+int		ft_count_word(char *str);
+char	**ft_splitt(char *s);
 
-void			ft_stack_add_back(t_node **lst, t_node *new);
-t_node			*ft_last_node(t_node *node);
-t_node			*ft_new_node(int value);
-
-t_node			*stack_chr(char *str);
-t_node			*stack_int(int argc, char **argv);
+/*lst_utils.c*/
+t_node	*stack_chr(char *str);
+t_node	*stack_int(int argc, char **argv);
 
 /*utils.c*/
 int		get_stack_size(t_node *stack);
-void	update_index(t_node **stack);
+void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b);
 void	maj_index(t_node **stack_a, t_node **stack_b);
 int		is_sorted(t_node **node);
 
@@ -57,23 +55,26 @@ void	insert(t_node *node, t_node **stack_a, t_node **stack_b, t_lib *lib);
 
 /*utils2.c*/
 int		is_smallest(t_node *node, t_node *stack);
-int		closest_lower(t_node *target, t_node *stack);
+int		closest_lower(t_node *target, t_node *stack, t_lib *lib);
 int		closest_higher(t_node *target, t_node *stack);
 t_node	*smallest(t_node **stack);
 t_node	*bigest(t_node **stack);
 
+/*pars_free.c*/
+int		not_seen(t_node *stack, int value);
+void	free_stack(t_node **stack);
+void	free_split(char **split);
+void	free_lib(t_lib *lib);
+void	free_all(t_node **stack_a, t_node **stack_b, t_lib *lib);
 
-int				is_sorted(t_node **node);
-int				get_stack_size(t_node *stack);
+/*cost.c*/
+int		calculate_cost(t_node *node, t_lib *lib);
+
 void	print_stacks(t_node *stack_a, t_node *stack_b);
 
-void	maj_index(t_node **stack_a, t_node **stack_b);
-void	maj_size(t_lib *lib, t_node *stack_a, t_node *stack_b);
-t_node	*bigest(t_node **stack);
 void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib);
 void	sort_3(t_node **stack);
 void	sort_all(t_node **stack_a, t_node **stack_b, t_lib *lib);
-void	node_on_top(t_node **stack, t_node *node);
 
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_node	*ft_last_node(t_node *node)
 {
@@ -60,25 +60,26 @@ t_node	*stack_chr(char *str)
 	char	**argv;
 	int		i;
 	int		wc;
+	long	number;
 
 	stack = NULL;
-	i = 0;
+	i = -1;
 	wc = ft_count_word(str);
 	argv = ft_splitt(str);
-	while (i < wc)
+	while (++i < wc)
 	{
-		if (ft_atoi_custom(argv[i]) < INT_MIN || ft_atoi_custom(argv[i]) > INT_MAX
-			 || ft_atoi_custom(argv[i]) == LONG_MIN)
+		number = ft_atoi_custom(argv[i]);
+		if (number < INT_MIN || number > INT_MAX || number == LONG_MIN
+			 || !not_seen(stack, number))
 		{
-			ft_printf("Error\n");
+			free_stack(&stack);
+			free_split(argv);
 			return (NULL);
 		}
-		else
-		{
-			ft_stack_add_back(&stack, ft_new_node(ft_atoi_custom(argv[i])));
-			i++;
-		}
+		else if (not_seen(stack, number))
+			ft_stack_add_back(&stack, ft_new_node(number));
 	}
+	free_split(argv);
 	return (stack);
 }
 
@@ -86,22 +87,21 @@ t_node	*stack_int(int argc, char **argv)
 {
 	t_node	*stack;
 	int		i;
+	long	number;
 
 	stack = NULL;
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
-		if (ft_atoi_custom(argv[i]) < INT_MIN || ft_atoi_custom(argv[i]) > INT_MAX
-			 || ft_atoi_custom(argv[i]) == LONG_MIN)
+		number = ft_atoi_custom(argv[i]);
+		if (number < INT_MIN || number > INT_MAX
+			 || number == LONG_MIN || !not_seen(stack, number))
 		{
-			ft_printf("Error\n");
+			free_stack(&stack);
 			return (NULL);
 		}
-		else
-		{
-			ft_stack_add_back(&stack, ft_new_node(ft_atoi_custom(argv[i])));
-			i++;
-		}
+		else if (not_seen(stack, number))
+			ft_stack_add_back(&stack, ft_new_node(number));
 	}
 	return (stack);
 }

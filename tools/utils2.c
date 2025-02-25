@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_node	*smallest(t_node **stack)
 {
@@ -46,7 +46,7 @@ int	is_smallest(t_node *node, t_node *stack)
 	return (1);
 }
 
-int	closest_lower(t_node *target, t_node *stack)
+int	closest_lower(t_node *target, t_node *stack, t_lib *lib)
 {
     t_node  *current;
     int     best_index;
@@ -66,6 +66,8 @@ int	closest_lower(t_node *target, t_node *stack)
         }
         current = current->next;
     }
+	if (best_index == 0)
+		return (lib->size_b);
 	return (best_index);
 }
 

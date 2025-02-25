@@ -51,16 +51,16 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 	while (i < push)
 	{
 		small = smallest(stack_a);
-		move_node_on_top_a(stack_a, small->index, lib);
+		move_node_to_top_a(stack_a, small->index, lib);
 		pb(stack_a, stack_b);
 		maj_index(stack_a, stack_b);
 		maj_size(lib, *stack_a, *stack_b);
-		print_stacks(*stack_a, *stack_b);
+		/*print_stacks(*stack_a, *stack_b);*/
 		i++;
 	}
 	sort_3(stack_a);
 	maj_index(stack_a, stack_b);
-	print_stacks(*stack_a, *stack_b);
+	/*print_stacks(*stack_a, *stack_b);*/
 	i = 0;
 	while (i < push)
 	{
@@ -68,5 +68,5 @@ void	sort_5(t_node **stack_a, t_node **stack_b, t_lib *lib)
 		i++;
 	}
 	maj_index(stack_a, stack_b);
-	print_stacks(*stack_a, *stack_b);
+	/*print_stacks(*stack_a, *stack_b);*/
 }

@@ -18,9 +18,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 LD_FLAGS = -Llibft -l:libft.a
 
-SRC = main.c utils.c utils2.c lst_utils.c push.c rotate.c r_rotate.c swap.c tiny_sort.c split.c turkey_sort.c move.c
+SRC = main.c tiny_sort.c turkey_sort.c move.c cost.c
+MOVEMENTS = movements/push.c movements/rotate.c movements/r_rotate.c movements/swap.c
+TOOLS = tools/lst_utils.c tools/split.c tools/utils.c tools/utils2.c tools/pars_free.c
 
 OBJ = $(SRC:.c=.o)
+MOVEMENTS_OBJ = $(MOVEMENTS:.c=.o)
+TOOLS_OBJ = $(TOOLS:.c=.o)
 
 TARGET = push_swap
 
@@ -29,14 +33,14 @@ all: $(TARGET)
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(TARGET): make_libs $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) $(LD_FLAGS) -o $(TARGET) 
+$(TARGET): make_libs $(OBJ) $(MOVEMENTS_OBJ) $(TOOLS_OBJ)
+	$(CC) $(OBJ) $(MOVEMENTS_OBJ) $(TOOLS_OBJ) $(CFLAGS) $(LD_FLAGS) -o $(TARGET) 
 
 make_libs:
 	make -C libft
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(MOVEMENTS_OBJ) $(TOOLS_OBJ)
 	make -C libft clean
 
 fclean: clean

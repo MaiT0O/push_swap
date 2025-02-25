@@ -1,55 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r_rotate.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 15:35:37 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/04 15:35:38 by ebansse          ###   ########.fr       */
+/*   Created: 2025/02/04 15:35:42 by ebansse           #+#    #+#             */
+/*   Updated: 2025/02/04 15:35:43 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	r_rotate(t_node **stack)
+void rotate(t_node **stack)
 {
-	t_node *tail;
-    t_node *second_last;
+    t_node *tail;
+    t_node *head;
 
     if (!*stack || !(*stack)->next)
         return;
 
+    head = *stack;
     tail = *stack;
-    second_last = NULL;
 
     while (tail->next)
-    {
-        second_last = tail;
         tail = tail->next;
-    }
 
-    second_last->next = NULL;
-    tail->next = *stack;
-    *stack = tail;
+    *stack = head->next;
     (*stack)->prev = NULL;
+
+    head->next = NULL;
+    tail->next = head;
+    head->prev = tail;
 }
 
-void	rra(t_node **stack_a)
+void	ra(t_node **stack_a)
 {
-	r_rotate(stack_a);
-	ft_printf("rra\n");
+	rotate(stack_a);
+	ft_printf("ra\n");
 }
 
-void	rrb(t_node **stack_b)
+void	rb(t_node **stack_b)
 {
-	r_rotate(stack_b);
-	ft_printf("rrb\n");
+	rotate(stack_b);
+	ft_printf("rb\n");
 }
 
-void	rrr(t_node **stack_a, t_node **stack_b)
+void	rr(t_node **stack_a, t_node **stack_b)
 {
-	r_rotate(stack_a);
-	r_rotate(stack_b);
-	ft_printf("rrr\n");
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_printf("rr\n");
 }

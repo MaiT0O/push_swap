@@ -6,7 +6,7 @@
 #    By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 13:36:18 by ebansse           #+#    #+#              #
-#    Updated: 2025/02/10 15:50:37 by ebansse          ###   ########.fr        #
+#    Updated: 2025/03/04 12:16:27 by ebansse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LD_FLAGS = -Llibft -l:libft.a
 
-SRC = main.c tiny_sort.c turkey_sort.c move.c cost.c
+SRC = main.c tiny_sort.c turkey_sort.c move.c
 MOVEMENTS = movements/push.c movements/rotate.c movements/r_rotate.c movements/swap.c
 TOOLS = tools/lst_utils.c tools/split.c tools/utils.c tools/utils2.c tools/pars_free.c
 

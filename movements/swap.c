@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:35:48 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/04 15:35:49 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:49:11 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	swap(t_node **stack)
 {
-	int		tmp_value;
+	int	tmp_value;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-
 	tmp_value = (*stack)->next->value;
 	(*stack)->next->value = (*stack)->value;
 	(*stack)->value = tmp_value;

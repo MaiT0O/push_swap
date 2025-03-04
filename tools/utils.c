@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:54:40 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/17 14:01:44 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:46:07 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int	get_stack_size(t_node *stack)
 {
 	t_node	*tmp;
-	int 	size;
+	int		size;
 
 	if (!stack)
 		return (0);
-
 	tmp = stack;
 	size = 0;
 	while (tmp)
@@ -27,14 +26,14 @@ int	get_stack_size(t_node *stack)
 		size++;
 		tmp = tmp->next;
 	}
-	return size;
+	return (size);
 }
 
 void	update_index(t_node **stack)
 {
-	int 	i;
-	t_node *tmp;
-	
+	int		i;
+	t_node	*tmp;
+
 	i = 0;
 	tmp = *stack;
 	while (tmp)
@@ -47,12 +46,12 @@ void	update_index(t_node **stack)
 int	is_sorted(t_node **node)
 {
 	t_node	*tmp;
-	
+
 	tmp = *node;
 	while ((tmp) && (tmp)->next)
 	{
 		if (tmp->value > tmp->next->value)
-		return (0);
+			return (0);
 		tmp = tmp->next;
 	}
 	return (1);

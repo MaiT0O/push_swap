@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:32 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/10 14:27:02 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:44:49 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	ft_count_word(char *str)
 {
-	int i = 0;
-	int wc = 0;
-	
+	int	i;
+	int	wc;
+
+	i = 0;
+	wc = 0;
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -31,15 +33,14 @@ int	ft_count_word(char *str)
 
 char	**ft_splitt(char *str)
 {
-	int 	i;
-	int 	j;
-	int 	k;
+	int		i;
+	int		j;
+	int		k;
 	char	**out;
 
 	k = 0;
 	i = 0;
 	out = (char **)malloc(sizeof(char *) * (ft_count_word(str) + 1));
-	
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))

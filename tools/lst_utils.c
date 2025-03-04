@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:27:29 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/10 15:12:09 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:30:00 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,6 @@ t_node	*ft_last_node(t_node *node)
 	return (node);
 }
 
-void	ft_stack_add_back(t_node **lst, t_node *new)
-{
-    t_node	*last;
-
-    if (!new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-		new->index = 0;
-		new->prev = NULL;
-		new->next = NULL;
-        return ;
-    }
-    last = ft_last_node(*lst);
-    last->next = new;
-    new->prev = last;
-}
-
 t_node	*ft_new_node(int value)
 {
 	t_node	*new;
@@ -52,6 +33,25 @@ t_node	*ft_new_node(int value)
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
+}
+
+void	ft_stack_add_back(t_node **lst, t_node *new)
+{
+	t_node	*last;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		new->index = 0;
+		new->prev = NULL;
+		new->next = NULL;
+		return ;
+	}
+	last = ft_last_node(*lst);
+	last->next = new;
+	new->prev = last;
 }
 
 t_node	*stack_chr(char *str)
@@ -70,7 +70,7 @@ t_node	*stack_chr(char *str)
 	{
 		number = ft_atoi_custom(argv[i]);
 		if (number < INT_MIN || number > INT_MAX || number == LONG_MIN
-			 || !not_seen(stack, number))
+			|| !not_seen(stack, number))
 		{
 			free_stack(&stack);
 			free_split(argv);
@@ -95,7 +95,7 @@ t_node	*stack_int(int argc, char **argv)
 	{
 		number = ft_atoi_custom(argv[i]);
 		if (number < INT_MIN || number > INT_MAX
-			 || number == LONG_MIN || !not_seen(stack, number))
+			|| number == LONG_MIN || !not_seen(stack, number))
 		{
 			free_stack(&stack);
 			return (NULL);

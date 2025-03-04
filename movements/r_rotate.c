@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:35:37 by ebansse           #+#    #+#             */
-/*   Updated: 2025/02/04 15:35:38 by ebansse          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:48:29 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 void	r_rotate(t_node **stack)
 {
-	t_node *tail;
-    t_node *second_last;
+	t_node	*tail;
+	t_node	*second_last;
 
-    if (!*stack || !(*stack)->next)
-        return;
-
-    tail = *stack;
-    second_last = NULL;
-
-    while (tail->next)
-    {
-        second_last = tail;
-        tail = tail->next;
-    }
-
-    second_last->next = NULL;
-    tail->next = *stack;
-    *stack = tail;
-    (*stack)->prev = NULL;
+	if (!*stack || !(*stack)->next)
+		return ;
+	tail = *stack;
+	second_last = NULL;
+	while (tail->next)
+	{
+		second_last = tail;
+		tail = tail->next;
+	}
+	second_last->next = NULL;
+	tail->next = *stack;
+	*stack = tail;
+	(*stack)->prev = NULL;
 }
 
 void	rra(t_node **stack_a)
